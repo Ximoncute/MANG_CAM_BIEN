@@ -1,0 +1,13 @@
+--cpu Cortex-M3
+".\objects\main.o"
+".\objects\led_codinh.o"
+".\objects\led_nhay.o"
+".\objects\misc.o"
+".\objects\stm32f10x_gpio.o"
+".\objects\stm32f10x_rcc.o"
+".\objects\startup_stm32f10x_md.o"
+".\objects\system_stm32f10x.o"
+--strict --scatter ".\Objects\Blink_LED.sct"
+--summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list ".\Listings\Blink_LED.map" -o .\Objects\Blink_LED.axf
