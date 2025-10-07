@@ -1,0 +1,77 @@
+🟩 KẾ HOẠCH TỔNG QUÁT
+Giai đoạn 1: Kiểm tra phần cứng
+
+Kiểm tra nguồn:
+
+Đảm bảo tất cả dùng 3.3 V (STM32, ESP32-C3, DHT11, AHT10).
+
+Đo nguồn ra bằng đồng hồ nếu có.
+
+Kiểm tra nối mass:
+
+Dùng đồng hồ kiểm tra continuity giữa GND các module.
+
+Kiểm tra pull-up:
+
+DHT11 DATA phải có điện trở 4.7–10 kΩ kéo lên VCC.
+
+AHT10 SDA/SCL cần pull-up (nhiều module đã tích hợp sẵn).
+
+Cắm dây vào breadboard gọn, tránh lỏng.
+
+👉 Đừng vội nạp code, hãy chắc chắn phần cứng “sống” trước.
+
+Giai đoạn 2: Viết & kiểm tra code cho từng khối riêng lẻ
+2.1. STM32 + DHT11
+
+Môi trường: STM32CubeIDE hoặc Keil + HAL.
+
+Các bước:
+
+Tạo project, cấu hình clock.
+
+Bật USART1 (PA9=TX, PA10=RX) tốc độ 115200 baud.
+
+Viết driver đọc DHT11 qua PA0 (dùng HAL GPIO + delay µs).
+
+Đọc nhiệt độ & độ ẩm từ DHT11, in ra UART.
+
+Test: Dùng cáp USB của ST-Link và mở Terminal (PuTTY/STM32CubeProgrammer) trên PC để đọc giá trị.
+
+✅ Mục tiêu: đảm bảo STM32 đọc được DHT11 và gửi chuỗi dữ liệu qua UART.
+
+2.2. ESP32-C3 + AHT10
+
+Môi trường: Arduino IDE (hoặc PlatformIO).
+
+Các bước:
+
+Chọn board ESP32-C3 SuperMini.
+
+Dùng thư viện Adafruit_AHTX0 hoặc AHT10.
+
+Khởi tạo I²C với chân SDA=GPIO8, SCL=GPIO9.
+
+Đọc nhiệt độ & độ ẩm từ AHT10, in ra Serial (USB) để debug.
+
+✅ Mục tiêu: đảm bảo ESP32 đọc được AHT10.
+
+Giai đoạn 3: Kết nối hai MCU qua UART
+
+Đấu dây TX/RX như sơ đồ.
+
+Trong code:
+
+STM32: định kỳ gửi dữ liệu đọc từ DHT11 qua UART.
+
+ESP32: dùng Serial1.begin(115200, SERIAL_8N1, RX_pin, TX_pin) để nhận.
+
+Mở Serial Monitor của ESP32 để thấy dữ liệu từ STM32.
+
+✅ Mục tiêu: ESP32 nhận được dữ liệu từ STM32.
+
+Giai đoạn 4: Tích hợp & xử lý dữ liệu
+
+ESP32 đọc AHT10 cục bộ và đồng thời nhận dữ liệu DHT11 từ STM32.
+
+Ghép dữ liệu và hiển thị/đẩy lên cloud hoặc in ra Serial.
