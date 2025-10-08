@@ -174,6 +174,6 @@ int main(void) {
             UART1_SendString(buf); // gui thong bao loi
         }
 
-        Delay_ms(2000); // doc moi 2 giay
+        Delay_ms(10000); // doc moi 10 giay
     }
 }
