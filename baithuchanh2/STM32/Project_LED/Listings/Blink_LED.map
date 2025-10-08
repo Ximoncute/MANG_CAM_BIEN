@@ -212,7 +212,7 @@ Removing Unused input sections from the image.
     Removing led_nhay.o(.text), (0 bytes).
     Removing led_nhay.o(.text.delay_ms), (20 bytes).
     Removing led_nhay.o(.ARM.exidx.text.delay_ms), (8 bytes).
-    Removing led_nhay.o(.text.led_nhay), (46 bytes).
+    Removing led_nhay.o(.text.led_nhay), (42 bytes).
     Removing led_nhay.o(.ARM.exidx.text.led_nhay), (8 bytes).
     Removing misc.o(.text), (0 bytes).
     Removing misc.o(.text.NVIC_PriorityGroupConfig), (20 bytes).
@@ -335,7 +335,7 @@ Removing Unused input sections from the image.
     Removing system_stm32f10x.o(.data.SystemCoreClock), (4 bytes).
     Removing system_stm32f10x.o(.rodata.AHBPrescTable), (16 bytes).
 
-130 unused section(s) (total 2126 bytes) removed from the image.
+130 unused section(s) (total 2122 bytes) removed from the image.
 
 ==============================================================================
 
@@ -745,15 +745,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
-        18          0          0          0          0        824   led_codinh.o
-        42          0          0          0          0       1534   main.o
-        64         26        236          0       1536        832   startup_stm32f10x_md.o
-       180          0          0          0          0       5719   stm32f10x_gpio.o
-        24          0          0          0          0       7442   stm32f10x_rcc.o
-       280          0          0          0          0       2822   system_stm32f10x.o
+        18          0          0          0          0        891   led_codinh.o
+        42          0          0          0          0       1605   main.o
+        64         26        236          0       1536        900   startup_stm32f10x_md.o
+       180          0          0          0          0       5786   stm32f10x_gpio.o
+        24          0          0          0          0       7509   stm32f10x_rcc.o
+       280          0          0          0          0       2889   system_stm32f10x.o
 
     ----------------------------------------------------------------------
-       616         26        252          0       1536      19173   Object Totals
+       616         26        252          0       1536      19580   Object Totals
          0          0         16          0          0          0   (incl. Generated)
          8          0          0          0          0          0   (incl. Padding)
 
@@ -801,8 +801,8 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-       912         42        252          0       1632      19569   Grand Totals
-       912         42        252          0       1632      19569   ELF Image Totals
+       912         42        252          0       1632      19976   Grand Totals
+       912         42        252          0       1632      19976   ELF Image Totals
        912         42        252          0          0          0   ROM Totals
 
 ==============================================================================

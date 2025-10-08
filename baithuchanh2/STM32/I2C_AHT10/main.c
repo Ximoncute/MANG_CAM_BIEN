@@ -1,5 +1,5 @@
 #include "stm32f10x.h"
-#include "aht10.h"
+#include "AHT10.h"
 
 float Temperature, Humidity;
 

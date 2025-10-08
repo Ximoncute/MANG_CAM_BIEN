@@ -1,5 +1,5 @@
 #include "stm32f10x.h"
-#include "aht10.h"
+#include "AHT10.h"
 
 // Chân I2C bit-bang (PB6=SCL, PB7=SDA)
 #define SCL_H() GPIOB->BSRR = GPIO_BSRR_BS6
@@ -12,7 +12,7 @@
 #define AHT10_ADDR 0x70   // 0x38 << 1
 
 static void delay_us(uint32_t t) {
-    for(uint32_t i=0;i<t*8;i++) __NOP();   // ch?nh cho F_CPU=72MHz
+    for(uint32_t i=0;i<t*8;i++) __NOP();   // chinh cho F_CPU=72MHz
 }
 
 // I2C bit-banging

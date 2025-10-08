@@ -8,9 +8,9 @@ void delay_ms(uint32_t ms) {
 
 void led_nhay(void) {
     while (1) {
-        GPIO_ResetBits(GPIOC, GPIO_Pin_13); // LED sáng
-        delay_ms(500);
-        GPIO_SetBits(GPIOC, GPIO_Pin_13);   // LED t?t
-        delay_ms(500);
+        GPIO_ResetBits(GPIOC, GPIO_Pin_13); // LED sang
+        delay_ms(100);
+        GPIO_SetBits(GPIOC, GPIO_Pin_13);   // LED tat
+        delay_ms(100);
     }
 }

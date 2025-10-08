@@ -1,9 +1,9 @@
 #include "stm32f10x.h"
 #include <stdint.h>
 
-// ===================== Bi?n toàn c?c =====================
-int hum = 0;     // Ð? ?m nguyên (%)
-int temp = 0;    // Nhi?t d? nguyên (°C)
+// ===================== Bien toan cuc =====================
+int hum = 0;     // Do am nguyen (%)
+int temp = 0;    // Nhiet do nguyen (°C)
 
 uint8_t I_RH, D_RH, I_Temp, D_Temp;
 uint8_t Rh_byte1, Rh_byte2, Temp_byte1, Temp_byte2, CheckSum, presence;
@@ -16,7 +16,7 @@ void DHT11_Start(void);
 uint8_t DHT11_Check_Response(void);
 uint8_t DHT11_Read(void);
 
-// ===================== Delay b?ng SysTick =====================
+// ===================== Delay bang SysTick =====================
 void delay_us(uint32_t us)
 {
     SysTick->LOAD = 72 * us;      // 72 MHz
@@ -59,9 +59,9 @@ void DHT11_Set_Input(void)
 void DHT11_Start(void)
 {
     DHT11_Set_Output();
-    GPIOA->BSRR = (1 << (DHT11_PIN + 16)); // Kéo xu?ng 0
-    delay_ms(20);                          // Ít nh?t 18ms
-    GPIOA->BSRR = (1 << DHT11_PIN);        // Kéo lên 1
+    GPIOA->BSRR = (1 << (DHT11_PIN + 16)); // Keo xuong 0
+    delay_ms(20);                          // It nhat 18ms
+    GPIOA->BSRR = (1 << DHT11_PIN);        // Keo len 1
     delay_us(30);
     DHT11_Set_Input();
 }
@@ -84,11 +84,11 @@ uint8_t DHT11_Read(void)
     uint8_t i, j = 0;
     for (i = 0; i < 8; i++)
     {
-        while (!(GPIOA->IDR & (1 << DHT11_PIN))); // ch? lên
+        while (!(GPIOA->IDR & (1 << DHT11_PIN))); // Cho len
         delay_us(40);
         if (GPIOA->IDR & (1 << DHT11_PIN))
             j |= (1 << (7 - i));
-        while (GPIOA->IDR & (1 << DHT11_PIN));    // ch? xu?ng
+        while (GPIOA->IDR & (1 << DHT11_PIN));    // Cho xuong
     }
     return j;
 }
@@ -97,7 +97,7 @@ uint8_t DHT11_Read(void)
 int main(void)
 {
     GPIO_Config();
-    delay_ms(1000); // Ch? c?m bi?n ?n d?nh
+    delay_ms(1000); // Cho cam bien on dinh
 
     while (1)
     {
@@ -117,10 +117,10 @@ int main(void)
             I_Temp = Temp_byte1;
             D_Temp = Temp_byte2;
 
-            hum  = I_RH;   // giá tr? % d? ?m
-            temp = I_Temp; // giá tr? °C nhi?t d?
+            hum  = I_RH;   // Gia tri % do am
+            temp = I_Temp; // Gia tri °C nhiet do
         }
 
-        delay_ms(2000); // Ð?c m?i 2 giây
+        delay_ms(500); // Doc moi 0,5 giay
     }
 }
